@@ -97,11 +97,11 @@ const chatListSettings = () => {
                         // 可以直接使用行內樣式做微調 
                         `
                             <i class="bi bi-pin" style="margin-right: 8px; transform: translateY(1px); font-size:16px"></i>
-                            <p>對話置頂</p>
+                            <span>對話置頂</span>
                         `,
                         `
                             <i class="bi bi-pin-angle" style="margin-right: 8px; transform: translateY(-1px); font-size:16px"></i>
-                            <p>取消置頂</p>
+                            <span>取消置頂</span>
                         `
                     ],
                     condition: (binder) => {
@@ -160,11 +160,11 @@ const chatingSettings = () => {
                         // 可以直接使用行內樣式做微調 
                         `
                             <i class="bi bi-pin" style="margin-right: 8px; transform: translateY(1px); font-size:16px"></i>
-                            <p>對話置頂</p>
+                            <span>對話置頂</span>
                         `,
                         `
                             <i class="bi bi-pin-angle" style="margin-right: 8px; transform: translateY(-1px); font-size:16px"></i>
-                            <p>取消置頂</p>
+                            <span>取消置頂</span>
                         `
                     ],
                     condition: (binder) => {
