@@ -37,33 +37,40 @@
             return chatRoomData;
         }
 
-        actionHandlers.getChatMessagesData = (chatId) => {
+        actionHandlers.getChatMessagesData = async (chatId) => {
             // console.log('這裡是外部定義的getChatMessagesData chatId : ' + chatId);
             // 利用chatId去取得資料
             // 目前是傳入假資料
             return chatId === 2 ? messages2 : messages;
         }
 
-        actionHandlers.loadMoreChatRooms = (type) => {
+        actionHandlers.loadMoreChatRooms = async (type) => {
             // console.log(type);
             // type是指現在的過濾模式 (全部, 未讀, 置頂)
             // 目前是傳入假資料
             return chatRoomData;
         }
 
-        actionHandlers.loadMoreMessages = () => {
+        actionHandlers.loadMoreMessages = async () => {
             // 目前是傳入假資料
             return messages;
         }
 
-        // 設定當前使用者的id
-        const chat = new WeienChat('user2');
+        actionHandlers.getUID = async () => {
+            // 目前是傳入假資料
+            return 'user2';
+        }
 
-        document.addEventListener('DOMContentLoaded', () => {
+        const chat = new WeienChat();
+
+        document.addEventListener('DOMContentLoaded', async () => {
             // 加載完成以後啟動
-            chat.init();
+            await chat.init();
 
+
+            // 即時更新測試
             let chatList = chat.getChatList();
+
             setTimeout(() => {
                 chatList[0].value.unreadMessages = 0;
                 chat.appendChat({
@@ -92,7 +99,7 @@
                             // online: true,  //目前無作用  未來考慮增加
                         },
                     ], // 參與者列表 可大於2個人
-                    notifSettings: 'on', // 'on', 'off' , 不傳遞(或非上述兩個值)則不顯示
+                    notifySettings: 'on', // 'on', 'off' , 不傳遞(或非上述兩個值)則不顯示
                 });
             }, 2000)
 
@@ -106,7 +113,6 @@
                         chat.state.value.showMode = 'default';
                         setTimeout(() => {
                             chat._chatSessionData.value.participants[0].lastReadingAt = new Date();
-                            console.log(chat._chatSessionData.value);
                             chat._chatSessionData.value._lastActivity = new Date(); // 已讀更新使用 (因綁定物件偵測不到深層陣列的變動)
                         }, 2000)
                     }, 2000)
@@ -141,7 +147,7 @@
                         // online: true,  //目前無作用  未來考慮增加
                     },
                 ], // 參與者列表 可大於2個人
-                notifSettings: 'on', // 'on', 'off' , 不傳遞(或非上述兩個值)則不顯示
+                notifySettings: 'on', // 'on', 'off' , 不傳遞(或非上述兩個值)則不顯示
                 pinned: true,
                 // _lastActivity: 'new Data()' (程式額外添加的欄位, 用於偵測更新時間)
             },
@@ -179,7 +185,7 @@
                         // online: true,  //目前無作用  未來考慮增加
                     },
                 ], // 參與者列表 可大於2個人
-                notifSettings: 'off', // 'on', 'off' , 不傳遞(或非上述兩個值)則不顯示
+                notifySettings: 'off', // 'on', 'off' , 不傳遞(或非上述兩個值)則不顯示
             },
             {
                 chatId: 3,
@@ -207,7 +213,7 @@
                         // online: true,  //目前無作用  未來考慮增加
                     },
                 ], // 參與者列表 可大於2個人
-                notifSettings: 'off', // 'on', 'off' , 不傳遞(或非上述兩個值)則不顯示
+                notifySettings: 'off', // 'on', 'off' , 不傳遞(或非上述兩個值)則不顯示
             },
         ];
 

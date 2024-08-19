@@ -203,6 +203,9 @@
   border-radius: 15px;
   box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.1882352941);
 }
+#weien-chat .weien-chating-block .weien-messages-list .weien-message-card .weien-message p {
+  white-space: pre-wrap;
+}
 #weien-chat .weien-chating-block .weien-messages-list .weien-message-card .weien-message-state {
   padding: 0 10px;
   color: var(--weien-chat-text-desc);
@@ -219,6 +222,7 @@
   display: block;
 }
 #weien-chat .weien-chating-block .weien-messages-list .weien-message-card.weien-message-left.weien-header-message .chat-room-avatar .weien-message-sender-name {
+  width: 20em;
   position: absolute;
   top: 1px;
   left: calc(100% + 12px);
